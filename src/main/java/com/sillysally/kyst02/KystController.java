@@ -1,10 +1,8 @@
 package com.sillysally.kyst02;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
 
-@RestController
-@RequestMapping("/kyst")
+@Controller
 public class KystController {
 
 }
