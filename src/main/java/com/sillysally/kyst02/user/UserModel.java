@@ -1,16 +1,14 @@
 package com.sillysally.kyst02.user;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-//import org.springframework.security.core.GrantedAuthority;
-//import org.springframework.security.core.userdetails.UserDetails;
+import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
 @Entity
-public class UserModel /*implements UserDetails*/ {
+@Table(name="users")
+public class UserModel implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,7 +20,7 @@ public class UserModel /*implements UserDetails*/ {
     private String username;
     private String password;
 
-   /* @Override
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
     }
@@ -55,5 +53,5 @@ public class UserModel /*implements UserDetails*/ {
     @Override
     public boolean isEnabled() {
         return false;
-    }*/
+    }
 }

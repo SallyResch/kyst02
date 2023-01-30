@@ -10,7 +10,6 @@ public class UserModelService implements UserDetailsService {
 
     private final UserModelRepository userModelRepository;
 
-
     public UserModelService(UserModelRepository userModelRepository) {
         this.userModelRepository = userModelRepository;
     }
