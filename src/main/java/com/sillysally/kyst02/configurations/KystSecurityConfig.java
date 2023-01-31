@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
+import java.util.concurrent.TimeUnit;
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -25,13 +27,32 @@ public class KystSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception{
         http
-                .authorizeHttpRequests()
-                .requestMatchers("/","login","/error", "/kyst").permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .formLogin();
-
+                .authorizeHttpRequests(requests -> {
+                    requests
+                            .requestMatchers("/","login","/error", "/kyst", "/rest/**", "/register","/static/**").permitAll()
+                            .requestMatchers("/admin").hasRole("ADMIN")
+                            .anyRequest()
+                            .authenticated();
+                })
+                .formLogin(formlogin -> {
+                    formlogin.loginPage("/login");
+                })
+                .rememberMe(rememberMe ->{
+                    rememberMe
+                            .rememberMeParameter("remember-me")
+                            .tokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(21))
+                            .key("someSecureKey")
+                            .userDetailsService(userModelService);
+                })
+                .logout(logout ->{
+                    logout
+                            .logoutUrl("/logout")
+                            .logoutSuccessUrl("/login")
+                            .clearAuthentication(true)
+                            .invalidateHttpSession(true)
+                            .deleteCookies("remember-me", "JSESSIONID");
+                })
+                .authenticationProvider(authenticationProvider());
 
         return http.build();
     }
