@@ -19,6 +19,7 @@ public class KystViewConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
 
         registry.addViewController("/").setViewName("homePage");
+        registry.addViewController("/register").setViewName("registerPage");
         registry.addViewController("/admin").setViewName("adminPage");
         registry.addViewController("/user").setViewName("userPage");
         registry.addViewController("/login").setViewName("loginPage");

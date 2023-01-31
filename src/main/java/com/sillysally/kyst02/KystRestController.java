@@ -30,39 +30,10 @@ private final UserModelService userModelService;
         this.userModelService = userModelService;
     }
 
-    @GetMapping ("/saveUser")
-    public UserModel saveUser(){
-        UserModel user = new UserModel(
-                "Sally",
-                "Resch",
-                4,
-                "SallyRally",
-                bcrypt.bCryptEncoder().encode("password123"),
-                UserRoles.ADMIN.getGrantedAuthorities(),
-                true,
-                true,
-                true,
-                true
-        );
-        return userModelRepository.save(user);
-    }
-
     @GetMapping ("/encode")
     public String testEncode(){
         bcrypt.bCryptEncoder().matches("","");
         return bcrypt.bCryptEncoder().encode("password");
-    }
-
-    @GetMapping("/admin")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String testAdminPermission(){
-        return "only admins can enter";
-    }
-
-    @GetMapping("/user")
-    @PreAuthorize("hasRole('ROLE_USER')")
-    public String testUserPermission(){
-        return "Only user can enter";
     }
 
 }
