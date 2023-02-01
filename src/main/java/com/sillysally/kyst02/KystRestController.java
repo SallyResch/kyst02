@@ -30,10 +30,4 @@ private final UserModelService userModelService;
         this.userModelService = userModelService;
     }
 
-    @GetMapping ("/encode")
-    public String testEncode(){
-        bcrypt.bCryptEncoder().matches("","");
-        return bcrypt.bCryptEncoder().encode("password");
-    }
-
 }

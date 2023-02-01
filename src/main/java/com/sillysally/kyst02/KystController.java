@@ -1,5 +1,6 @@
 package com.sillysally.kyst02;
 
+import com.sillysally.kyst02.authorities.UserRoles;
 import com.sillysally.kyst02.configurations.KystPasswordConfig;
 import com.sillysally.kyst02.user.UserModel;
 import com.sillysally.kyst02.user.UserModelRepository;
@@ -9,6 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+
+import java.util.List;
 
 //webMvc
 
@@ -34,14 +38,21 @@ public class KystController {
         if (result.hasErrors()){
             return "registerPage";
         }
+        userModel.setUsername(userModel.getUsername());
         userModel.setPassword(kystPasswordConfig.bCryptEncoder().encode(userModel.getPassword()));
+       //userModel.setAuthorities(UserRoles.USER.getGrantedAuthorities());
         userModel.setAccountNonExpired(true);
         userModel.setAccountNonLocked(true);
         userModel.setCredentialsNonExpired(true);
         userModel.setEnabled(true);
-
         System.out.println(userModel);
         userModelRepository.save(userModel);
         return "homePage";
+    }
+
+    @PutMapping("/user")
+    public String changeUser(@Valid UserModel userModel){
+
+        return "userPage";
     }
 }

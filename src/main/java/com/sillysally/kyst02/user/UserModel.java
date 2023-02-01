@@ -1,13 +1,11 @@
 package com.sillysally.kyst02.user;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,26 +20,24 @@ import java.util.List;
 @NoArgsConstructor
 public class UserModel implements UserDetails{
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotEmpty
+    //@NotEmpty
     private String firstName;
 
-    @NotEmpty
+    //@NotEmpty
     private String lastName;
 
-    @NotNull
+    //@NotNull
     private int familyMembers;
 
-    @NotEmpty
+    //@NotEmpty
     @Size(min=2, max=50)
-    @Email
     private String username;
 
-    @NotEmpty(message = "Field can not be empty")
+    //@NotEmpty(message = "Field can not be empty")
     @Size(min=6,max=14)
     private String password;
 
@@ -74,6 +70,32 @@ public class UserModel implements UserDetails{
         this.isEnabled = isEnabled;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public UserModel setFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public UserModel setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    public int getFamilyMembers() {
+        return familyMembers;
+    }
+
+    public UserModel setFamilyMembers(int familyMembers) {
+        this.familyMembers = familyMembers;
+        return this;
+    }
 
     public void setUsername(String username) {
         this.username = username;

@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta charset="UTF-8">
     <title>Login page</title>
-    <link rel="stylesheet"
-          th:href="@{/css/style.css}" />
 </head>
 <body>
 <div>
-
-    <form th:action="@{/loginPage.html}"
-          method="post">
+    <header>
+        <h1>Login, your life is about to get organized</h1>
+    </header>
+</div>
+<div>
+    <form th:action="@{/login}"
+          method="post"
+          style="max-width: 350px;
+          margin: 0 auto;">
 
         <div th:if="${param.error}">
             <p class="text-danger">[[ ${session.SPRING_SECURITY_LAST_EXCEPTION.message} ]]</p>
@@ -19,19 +22,19 @@
 
         <!-- On Logout -->
         <div th:if="${param.logout}">
-            <p>You have been logged out.</p>
+            <p class="text-info">You have been logged out.</p>
         </div>
 
         <div>
 
             <!-- Username Input -->
             <div>
-                <input name="username" placeholder="username here..." type="text">
+                <input name="username" placeholder="username here..." type="text" class="form-control" required autofocus>
             </div>
 
             <!-- Password Input -->
             <div>
-                <input name="password" placeholder="password here..." type="password">
+                <input name="password" placeholder="password here..." type="password" class="form-control" required autofocus/>
             </div>
 
             <!-- Checkbox Remember-me Input -->
@@ -41,14 +44,18 @@
 
             <!-- Submit -->
             <div>
-                <button type="submit"
+                <input type="submit"
                         value="Login"
-                        class="btn btn-primary">Submit <button/>
+                        class="btn btn-primary"/>
             </div>
 
         </div>
     </form>
 </div>
-
+<footer id="mainFooter">
+    <div class="footer">
+        <h3>This it the footer</h3>
+    </div>
+</footer>
 </body>
 </html>

@@ -29,7 +29,7 @@ public class KystSecurityConfig {
         http
                 .authorizeHttpRequests(requests -> {
                     requests
-                            .requestMatchers("/","login","/error", "/kyst","/register","/static/**").permitAll()
+                            .requestMatchers("/kyst","/login","/error", "/register","/static/**").permitAll()
                             .requestMatchers("/admin").hasRole("ADMIN")
                             .requestMatchers("/user").hasRole("USER")
                             .anyRequest()
