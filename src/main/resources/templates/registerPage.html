@@ -3,9 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>SignUp</title>
+    <link rel="stylesheet"
+          th:href="@{static/css/style.css}" />
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
 <form th:action="@{/register}" th:object="${userModel}" method="post">
+
+    <div>
+        <p>Firstname:</p>
+        <input th:field="*{firstName}" type="text" placeholder="Firstname"/>
+
+        <!-- Display SINGULAR error -->
+        <p th:if="${ #fields.hasErrors('firstName') }"
+           th:errors="*{firstName}"
+           th:errorclass="error"
+        ></p>
+    </div>
+
+    <div>
+        <p>Lastname:</p>
+        <input th:field="*{lastName}" type="text" placeholder="Lastname"/>
+
+        <!-- Display SINGULAR error -->
+        <p th:if="${ #fields.hasErrors('lastName') }"
+           th:errors="*{lastName}"
+           th:errorclass="error"
+        ></p>
+    </div>
+
+    <div>
+        <p>Amount of family members:</p>
+        <input th:field="*{familyMembers}" type="text" placeholder="Amount of familymembers">
+
+        <!-- Display SINGULAR error -->
+        <p th:if="${ #fields.hasErrors('familyMembers') }"
+           th:errors="*{familyMembers}"
+           th:errorclass="error"
+        ></p>
+    </div>
 
     <!-- Username Input -->
     <div>
@@ -19,11 +59,10 @@
         ></p>
     </div>
 
-
     <!-- Password Input -->
     <div>
         <p>Password:</p>
-        <input th:field="*{password}" type="password" placeholder="write your password here...">
+        <input th:field="*{password}" type="password" placeholder="write your password here..."/>
 
         <ul>
             <li th:each="error : ${#fields.errors('password')}"
@@ -34,12 +73,8 @@
 
     </div>
 
-    <input type="submit" value="Register">
-
+    <button type="submit" value="Register">Sign Up</button>
 </form>
-
-
 </div>
-
 </body>
 </html>

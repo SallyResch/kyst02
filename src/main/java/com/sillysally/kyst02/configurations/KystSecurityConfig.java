@@ -29,8 +29,9 @@ public class KystSecurityConfig {
         http
                 .authorizeHttpRequests(requests -> {
                     requests
-                            .requestMatchers("/","login","/error", "/kyst", "/rest/**", "/register","/static/**").permitAll()
+                            .requestMatchers("/","login","/error", "/kyst","/register","/static/**").permitAll()
                             .requestMatchers("/admin").hasRole("ADMIN")
+                            .requestMatchers("/user").hasRole("USER")
                             .anyRequest()
                             .authenticated();
                 })
@@ -47,18 +48,18 @@ public class KystSecurityConfig {
                 .logout(logout ->{
                     logout
                             .logoutUrl("/logout")
-                            .logoutSuccessUrl("/login")
+                            .logoutSuccessUrl("/home")
                             .clearAuthentication(true)
                             .invalidateHttpSession(true)
                             .deleteCookies("remember-me", "JSESSIONID");
                 })
-                .authenticationProvider(authenticationProvider());
+                .authenticationProvider(authenticationOverride());
 
         return http.build();
     }
 
     //Här säger vi till Spring att använda våran implementation istället
-    public DaoAuthenticationProvider authenticationProvider(){
+    public DaoAuthenticationProvider authenticationOverride(){
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setUserDetailsService(userModelService);
         provider.setPasswordEncoder(bcrypt.bCryptEncoder());

@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Login page</title>
     <link rel="stylesheet"
           th:href="@{/css/style.css}" />
 </head>
 <body>
-<div class="container-fluid text-center ">
+<div>
 
-    <form th:action="@{/login}"
+    <form th:action="@{/loginPage.html}"
           method="post">
 
         <div th:if="${param.error}">
@@ -18,19 +19,19 @@
 
         <!-- On Logout -->
         <div th:if="${param.logout}">
-            <p class="text-info">You have been logged out.</p>
+            <p>You have been logged out.</p>
         </div>
 
-        <div class="border border-secondary p-3 rounded">
+        <div>
 
             <!-- Username Input -->
-            <div class="">
-                <input name="username" placeholder="username here..." type="text" class="form-control" required autofocus>
+            <div>
+                <input name="username" placeholder="username here..." type="text">
             </div>
 
             <!-- Password Input -->
             <div>
-                <input name="password" placeholder="password here..." type="password" class="form-control" required autofocus>
+                <input name="password" placeholder="password here..." type="password">
             </div>
 
             <!-- Checkbox Remember-me Input -->
@@ -40,9 +41,9 @@
 
             <!-- Submit -->
             <div>
-                <input type="submit"
-                       value="Login"
-                       class="btn btn-primary" />
+                <button type="submit"
+                        value="Login"
+                        class="btn btn-primary">Submit <button/>
             </div>
 
         </div>

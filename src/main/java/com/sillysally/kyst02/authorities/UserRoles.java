@@ -6,8 +6,8 @@ import java.util.List;
 import static com.sillysally.kyst02.authorities.UserPermissions.*;
 
 public enum UserRoles {
-    USER(List.of(USER_READ)),
-    ADMIN(List.of(ADMIN_READ, ADMIN_WRITE));
+    USER(List.of(USER_READ, USER_WRITE, USER_DELETE)),
+    ADMIN(List.of(ADMIN_READ, ADMIN_WRITE, ADMIN_DELETE));
 
     // Variable
     private final List<UserPermissions> permissionsList;

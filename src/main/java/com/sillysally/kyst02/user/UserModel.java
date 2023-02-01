@@ -1,8 +1,14 @@
 package com.sillysally.kyst02.user;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -11,6 +17,9 @@ import java.util.List;
 
 @Entity
 @Table(name="users")
+@Getter
+@Setter
+@NoArgsConstructor
 public class UserModel implements UserDetails{
 
 
@@ -18,24 +27,30 @@ public class UserModel implements UserDetails{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotEmpty
     private String firstName;
+
+    @NotEmpty
     private String lastName;
+
+    @NotNull
     private int familyMembers;
+
     @NotEmpty
-    @Size
+    @Size(min=2, max=50)
+    @Email
     private String username;
-    @NotEmpty
-    @Size
+
+    @NotEmpty(message = "Field can not be empty")
+    @Size(min=6,max=14)
     private String password;
+
     private List<String> authorities;
 
     private boolean isAccountNonExpired;
     private boolean isAccountNonLocked;
     private boolean isCredentialsNonExpired;
     private boolean isEnabled;
-
-    public UserModel() {
-    }
 
     public UserModel(String firstName,
                      String lastName,
@@ -58,6 +73,7 @@ public class UserModel implements UserDetails{
         this.isCredentialsNonExpired = isCredentialsNonExpired;
         this.isEnabled = isEnabled;
     }
+
 
     public void setUsername(String username) {
         this.username = username;
@@ -119,5 +135,22 @@ public class UserModel implements UserDetails{
     @Override
     public boolean isEnabled() {
         return isEnabled;
+    }
+
+    @Override
+    public String toString() {
+        return "UserModel{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", familyMembers=" + familyMembers +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", authorities=" + authorities +
+                ", isAccountNonExpired=" + isAccountNonExpired +
+                ", isAccountNonLocked=" + isAccountNonLocked +
+                ", isCredentialsNonExpired=" + isCredentialsNonExpired +
+                ", isEnabled=" + isEnabled +
+                '}';
     }
 }
