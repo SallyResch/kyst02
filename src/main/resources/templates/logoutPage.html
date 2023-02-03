@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Logout page</title>
     <link rel="stylesheet"
-          th:href="@{/css/style.css}" />
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
 </head>
 <body>
-<h1>Logout page</h1>
+<div class="container-fluid text-center ">
+
+    <!-- IS IT A POST? -->
+    <p>SURE YOU WANT TO LOG OUT? </p>
+
+    <form method="post" th:action="@{/logout}" >
+        <input type="submit"  value="Logout">
+    </form>
+
+</div>
 
 </body>
 </html>

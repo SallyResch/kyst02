@@ -2,6 +2,7 @@ package com.sillysally.kyst02.user;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,6 +24,7 @@ public class UserModel implements UserDetails{
     @NotEmpty
     private String lastName;
 
+    @NotNull
     private int familyMembers;
 
     @NotEmpty
@@ -30,7 +32,7 @@ public class UserModel implements UserDetails{
     private String username;
 
     @NotEmpty
-    @Size(min=6,max=14)
+    @Size(min=6,max=200)
     private String password;
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -41,6 +43,9 @@ public class UserModel implements UserDetails{
     private boolean isCredentialsNonExpired;
     private boolean isEnabled;
 
+    public UserModel() {
+
+    }
     public UserModel(String firstName,
                      String lastName,
                      int familyMembers,

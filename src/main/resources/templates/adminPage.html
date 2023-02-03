@@ -2,13 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet"
-          th:href="@{/css/style.css}" />
+
     <title>Adminpage</title>
 </head>
 <body>
+<header>
+    <h1>Admin page</h1>
+    <button><a th:href="@{/logout}">Logout?</a></button>
+</header>
 
-<h1>Admin page</h1>
 <footer id="mainFooter">
     <div class="footer">
         <h3>This it the footer</h3>

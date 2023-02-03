@@ -29,7 +29,7 @@ public class KystSecurityConfig {
         http.csrf().disable()
                 .authorizeHttpRequests(requests -> {
                     requests
-                            .requestMatchers("/kyst","/login","/error", "/register","/static/**").permitAll()
+                            .requestMatchers("/kyst","/login","/error", "/register","/static/**","/rest/**", "/logout").permitAll()
                             .requestMatchers("/admin").hasRole("ADMIN")
                             .requestMatchers("/user").hasRole("USER")
                             .anyRequest()
@@ -48,7 +48,7 @@ public class KystSecurityConfig {
                 .logout(logout ->{
                     logout
                             .logoutUrl("/logout")
-                            .logoutSuccessUrl("/home")
+                            .logoutSuccessUrl("/kyst")
                             .clearAuthentication(true)
                             .invalidateHttpSession(true)
                             .deleteCookies("remember-me", "JSESSIONID");

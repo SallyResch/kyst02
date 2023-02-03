@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>SignUp</title>
-    <link rel="stylesheet"
-          th:href="@{static/css/style.css}" />
     <style>
         .error {
             color: red;
         }
     </style>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
 </head>
 <body>
+<div class=" d-flex justify-content-center">
 <form th:action="@{/register}" th:object="${userModel}" method="post">
 
     <div>
@@ -75,15 +78,16 @@
 
     <div class="m-4 dropdown d-flex">
 
-        <select class="btn btn-primary dropdown-toggle" th:field="*{authorities}" >
+        <select class="btn btn-primary dropdown-toggle" th:field="*{authorities}">
             <option class="dropdown-item" th:text="Admin" value="Admin"></option>
             <option class="dropdown-item" th:text="User" value="User"></option>
             <option class="dropdown-item" th:text="Company" value="Company"></option>
         </select>
-
     </div>
 
-    <button type="submit" value="Register" th:action="">Sign Up</button>
+    <div class="d-flex justify-content-center p-5">
+        <input type="submit" value="SignUp" class="btn btn-primary" />
+    </div>
 </form>
 </div>
 <footer id="mainFooter">

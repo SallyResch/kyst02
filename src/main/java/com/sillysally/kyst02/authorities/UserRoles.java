@@ -8,7 +8,6 @@ import static com.sillysally.kyst02.authorities.UserPermissions.*;
 
 public enum UserRoles {
     USER(Set.of(USER_READ, USER_WRITE, USER_DELETE_ACCOUNT)),
-    COMPANY(Set.of(COMPANY_WRITE, COMPANY_READ)),
     ADMIN(Set.of(ADMIN_READ, ADMIN_WRITE, ADMIN_DELETE_POST));
 
     // Variable
