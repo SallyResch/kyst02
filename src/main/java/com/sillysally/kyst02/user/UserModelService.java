@@ -18,4 +18,8 @@ public class UserModelService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userModelRepository.findByUsername(username);
     }
+
+    // TODO - Save User
+    // TODO - Edit User
+    // TODO - DELETE User
 }

@@ -10,11 +10,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 public class KystViewConfig implements WebMvcConfigurer {
 
-   /*@Override
+   @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**")
                 .addResourceLocations("classpath:/static/");
-    }*/
+    }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {

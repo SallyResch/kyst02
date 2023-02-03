@@ -26,7 +26,7 @@ public class KystSecurityConfig {
 //finns mer att göra från kristoffers template
     @Bean
     public SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception{
-        http
+        http.csrf().disable()
                 .authorizeHttpRequests(requests -> {
                     requests
                             .requestMatchers("/kyst","/login","/error", "/register","/static/**").permitAll()

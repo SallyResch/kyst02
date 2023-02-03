@@ -10,6 +10,6 @@ public class KystPasswordConfig {
 
     @Bean
     public PasswordEncoder bCryptEncoder(){
-        return new BCryptPasswordEncoder(13);
+        return new BCryptPasswordEncoder(14);
     }
 }

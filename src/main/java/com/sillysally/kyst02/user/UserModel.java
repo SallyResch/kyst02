@@ -2,46 +2,39 @@ package com.sillysally.kyst02.user;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
-@Getter
-@Setter
-@NoArgsConstructor
 public class UserModel implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    //@NotEmpty
+    @NotEmpty
     private String firstName;
 
-    //@NotEmpty
+    @NotEmpty
     private String lastName;
 
-    //@NotNull
     private int familyMembers;
 
-    //@NotEmpty
+    @NotEmpty
     @Size(min=2, max=50)
     private String username;
 
-    //@NotEmpty(message = "Field can not be empty")
+    @NotEmpty
     @Size(min=6,max=14)
     private String password;
 
-    private List<String> authorities;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<SimpleGrantedAuthority> authorities;
 
     private boolean isAccountNonExpired;
     private boolean isAccountNonLocked;
@@ -53,7 +46,7 @@ public class UserModel implements UserDetails{
                      int familyMembers,
                      String username,
                      String password,
-                     List<String> authorities,
+                     Set<SimpleGrantedAuthority> authorities,
                      boolean isAccountNonExpired,
                      boolean isAccountNonLocked,
                      boolean isCredentialsNonExpired,
@@ -105,7 +98,7 @@ public class UserModel implements UserDetails{
         this.password = password;
     }
 
-    public void setAuthorities(List<String> authorities) {
+    public void setAuthorities(Set<SimpleGrantedAuthority> authorities) {
         this.authorities = authorities;
     }
 
@@ -136,7 +129,8 @@ public class UserModel implements UserDetails{
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+
+        return authorities;
     }
 
     @Override

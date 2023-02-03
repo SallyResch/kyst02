@@ -73,6 +73,16 @@
 
     </div>
 
+    <div class="m-4 dropdown d-flex">
+
+        <select class="btn btn-primary dropdown-toggle" th:field="*{authorities}" >
+            <option class="dropdown-item" th:text="Admin" value="Admin"></option>
+            <option class="dropdown-item" th:text="User" value="User"></option>
+            <option class="dropdown-item" th:text="Company" value="Company"></option>
+        </select>
+
+    </div>
+
     <button type="submit" value="Register" th:action="">Sign Up</button>
 </form>
 </div>

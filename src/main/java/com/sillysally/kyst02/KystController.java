@@ -28,7 +28,7 @@ public class KystController {
     }
 
     @GetMapping("/register")
-    public String registerUser(@Valid UserModel userModel){
+    public String displayUser(@Valid UserModel userModel){
         return "registerPage";
     }
 
@@ -38,16 +38,22 @@ public class KystController {
         if (result.hasErrors()){
             return "registerPage";
         }
+        String role = String.valueOf(userModel.getAuthorities().iterator().next());
+        switch(role){
+            case "Admin" -> userModel.setAuthorities(UserRoles.ADMIN.getGrantedAuthorities());
+            case "User" -> userModel.setAuthorities(UserRoles.USER.getGrantedAuthorities());
+            case "Company" -> userModel.setAuthorities(UserRoles.COMPANY.getGrantedAuthorities());
+        }
         userModel.setUsername(userModel.getUsername());
         userModel.setPassword(kystPasswordConfig.bCryptEncoder().encode(userModel.getPassword()));
-       //userModel.setAuthorities(UserRoles.USER.getGrantedAuthorities());
         userModel.setAccountNonExpired(true);
         userModel.setAccountNonLocked(true);
         userModel.setCredentialsNonExpired(true);
         userModel.setEnabled(true);
+
         System.out.println(userModel);
         userModelRepository.save(userModel);
-        return "homePage";
+        return "loginPage";
     }
 
     @PutMapping("/user")
