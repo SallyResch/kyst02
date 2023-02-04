@@ -29,7 +29,7 @@ public class UserModelDAO implements IUserModelDAO<UserModel>{
     }
 
     @Override
-    public void delete() {
-
+    public void delete(String username) {
+    userModelRepository.deleteByUsername(username);
     }
 }

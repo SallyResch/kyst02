@@ -6,5 +6,5 @@ public interface IUserModelDAO <T>{
     T findUser(String username);
     void save(UserModel userModel);
     void update();
-    void delete();
+    void delete(String username);
 }

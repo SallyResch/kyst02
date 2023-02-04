@@ -23,6 +23,7 @@ public class KystViewConfig implements WebMvcConfigurer {
         registry.addViewController("/admin").setViewName("adminPage");
         registry.addViewController("/register").setViewName("registerPage");
         registry.addViewController("/user").setViewName("userPage");
+        registry.addViewController("/delete").setViewName("deletePage");
         registry.addViewController("/login").setViewName("loginPage");
         registry.addViewController("/logout").setViewName("logoutPage");
 

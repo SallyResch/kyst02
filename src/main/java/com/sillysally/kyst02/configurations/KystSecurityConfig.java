@@ -32,6 +32,7 @@ public class KystSecurityConfig {
                             .requestMatchers("/kyst","/login","/error", "/register","/static/**","/rest/**", "/logout").permitAll()
                             .requestMatchers("/admin").hasRole("ADMIN")
                             .requestMatchers("/user").hasRole("USER")
+                            .requestMatchers("/delete").authenticated()
                             .anyRequest()
                             .authenticated();
                 })

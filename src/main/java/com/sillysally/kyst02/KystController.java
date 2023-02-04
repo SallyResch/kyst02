@@ -8,9 +8,7 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -53,6 +51,13 @@ public class KystController {
         System.out.println(userModel);
         userModelRepository.save(userModel);
         return "loginPage";
+    }
+
+    @GetMapping ("/delete/{username}")
+    public String deleteByUsername(@RequestParam("username")String username){
+    userModelRepository.deleteByUsername(username);
+    
+    return "redirect:/userPage";
     }
 
 }
