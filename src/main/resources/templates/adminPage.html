@@ -8,6 +8,7 @@
 <body>
 <header>
     <h1>Admin page</h1>
+    <h1>Hello Boss <div th:text="${#authentication.principal.firstName}"></div></h1>
     <button><a th:href="@{/logout}">Logout?</a></button>
 </header>
 
