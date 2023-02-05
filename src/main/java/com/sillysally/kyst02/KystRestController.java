@@ -1,6 +1,5 @@
 package com.sillysally.kyst02;
 
-import com.sillysally.kyst02.authorities.UserRoles;
 import com.sillysally.kyst02.configurations.KystPasswordConfig;
 
 import com.sillysally.kyst02.user.UserModel;
@@ -8,12 +7,10 @@ import com.sillysally.kyst02.user.UserModelRepository;
 import com.sillysally.kyst02.user.UserModelService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 
 @RestController
@@ -32,25 +29,10 @@ private final UserModelService userModelService;
         this.userModelRepository = userModelRepository;
         this.userModelService = userModelService;
     }
-    @GetMapping("/saveBenny")
-    public UserModel saveUserBenny() {
 
-        UserModel benny = new UserModel(
-                "Benny",
-                "Karlsson",
-                6,
-                "Benny",
-                bcrypt.bCryptEncoder().encode("123"),
-                UserRoles.USER.getGrantedAuthorities(),
-                true,
-                true,
-                true,
-                true
-        );
-
-        System.out.println(benny);
-
-        return userModelRepository.save(benny);
+    @GetMapping("/findAllUsers")
+    public List <UserModel> fetchAllCustomers(){
+        return userModelRepository.findAll();
     }
 
     @GetMapping("/find/{username}")
@@ -60,38 +42,16 @@ private final UserModelService userModelService;
 
         return (UserModel) userModelService.loadUserByUsername(username);
     }
-
-
-
-    @GetMapping("/encode")
-    public String testEncoding() {
-
-        bcrypt.bCryptEncoder().matches("", "");
-
-        return bcrypt.bCryptEncoder().encode("password");
+/*
+    @PostMapping("/saveUser")
+    public UserModel saveUser(@RequestBody UserModel userModel){
+        return userModelService.save(userModel).getBody();
     }
 
-    @GetMapping("/admin")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String testAdminPermission() {
-
-        return "Only admins can enter";
+    @PutMapping("/{id}")
+    public ResponseEntity<UserModel> updateUser(@PathVariable("id") Long id, @RequestBody UserModel userModel){
+        System.out.println("Debugging ID" + id);
+        return userModelService.updateUserModel(id,userModel);
     }
-
-    @GetMapping("/user")
-    @PreAuthorize("hasRole('ROLE_USER')")
-    public String testUserPermission() {
-
-        return "Only user can enter";
-    }
-
-    // Logical
-    @GetMapping("/unknown")
-    @PreAuthorize("hasRole('ROLE_ADMIN') " + " && " +
-            "hasAuthority('user:read') ")
-    public String testUnknownPermission() {
-
-        return "This should NEVER work";
-    }
-
+ */
 }
