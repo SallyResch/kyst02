@@ -49,7 +49,7 @@ public class KystSecurityConfig {
                 .logout(logout ->{
                     logout
                             .logoutUrl("/logout")
-                            .logoutSuccessUrl("/kyst")
+                            .logoutSuccessUrl("/login")
                             .clearAuthentication(true)
                             .invalidateHttpSession(true)
                             .deleteCookies("remember-me", "JSESSIONID");

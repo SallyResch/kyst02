@@ -12,10 +12,12 @@
 <body>
 <div>
     <header>
-        <h1>Login, your life is about to get organized</h1>
+        <button><a th:href="@{/kyst}">To Startpage</a></button>
+        <h3>Login, your life is about to get organized</h3>
     </header>
 </div>
 <div>
+    <p th:if="${loginError}" class="error">Wrong user or password</p>
     <form th:action="@{/login}"
           method="post"
           style="max-width: 350px;
@@ -42,6 +44,7 @@
             <div>
                 <input name="remember-me" type="checkbox" />&nbsp;Remember Me
             </div>
+
             <!-- Submit -->
             <div>
                 <input type="submit"
@@ -53,7 +56,7 @@
 </div>
 <footer id="mainFooter">
     <div class="footer">
-        <h3>This it the footer</h3>
+        <h3>This is the footer</h3>
     </div>
 </footer>
 </body>
