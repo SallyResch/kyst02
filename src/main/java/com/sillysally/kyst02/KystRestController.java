@@ -8,6 +8,7 @@ import com.sillysally.kyst02.user.UserModelService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,16 +43,10 @@ private final UserModelService userModelService;
 
         return (UserModel) userModelService.loadUserByUsername(username);
     }
-/*
-    @PostMapping("/saveUser")
-    public UserModel saveUser(@RequestBody UserModel userModel){
-        return userModelService.save(userModel).getBody();
+    @DeleteMapping ("/delete/{username}")
+    public String deleteUser(@PathVariable("username")String username, Model model){
+        UserModel user = userModelRepository.findByUsername(username);
+        userModelRepository.delete(user);
+        return "User id deleted";
     }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<UserModel> updateUser(@PathVariable("id") Long id, @RequestBody UserModel userModel){
-        System.out.println("Debugging ID" + id);
-        return userModelService.updateUserModel(id,userModel);
-    }
- */
 }

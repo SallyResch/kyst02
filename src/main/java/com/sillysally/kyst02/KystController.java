@@ -10,8 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 //webMvc
 
 @Controller
@@ -51,13 +49,6 @@ public class KystController {
         System.out.println(userModel);
         userModelRepository.save(userModel);
         return "loginPage";
-    }
-
-    @GetMapping ("/delete/{username}")
-    public String deleteByUsername(@RequestParam("username")String username){
-    userModelRepository.deleteByUsername(username);
-    
-    return "redirect:/userPage";
     }
 
 }
