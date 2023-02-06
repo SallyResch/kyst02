@@ -19,15 +19,14 @@
                 <li><a th:href="@{/kyst}" class="nav-link px-2 text-secondary">Home</a></li>
                 <li><a th:href="@{/kyst}" class="nav-link px-2 text-secondary">Weather</a></li>
             </ul>
+            <div class="text-end">
+                <button type="button" class="btn btn-warning"><a th:href="@{/admin}">Login as Admin</a></button>
+                <button type="button" class="btn btn-warning"><a th:href="@{/user}">Login as User</a></button>
+                <button type="button" class="btn btn-warning"><a th:href="@{/register}">Sign-Up</a></button>
+            </div>
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                 <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
             </form>
-
-            <div class="text-end">
-                <button type="button" class="btn btn-warning"><a th:href="@{/admin}">Admin</a></button>
-                <button type="button" class="btn btn-warning"><a th:href="@{/user}">User</a></button>
-                <button type="button" class="btn btn-warning"><a th:href="@{/register}">Sign-Up</a></button>
-            </div>
         </div>
     </div>
 </header>

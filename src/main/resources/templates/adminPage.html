@@ -12,7 +12,6 @@
     <button><a th:href="@{/logout}">Logout?</a></button>
 </header>
 <main>
-    <div sec:authorize="isAuthenticated()">Text visible only to authenticated users.</div>
     <div sec:authentication="principal.firstName"></div>
     <div sec:authentication="principal.lastName"></div>
     <div sec:authorize="hasRole('USER')"><a th:href="@{'/delete/' + ${#authentication.principal.username}}"
