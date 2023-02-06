@@ -5,6 +5,7 @@ import com.sillysally.kyst02.configurations.KystPasswordConfig;
 import com.sillysally.kyst02.user.UserModel;
 import com.sillysally.kyst02.user.UserModelRepository;
 import jakarta.validation.Valid;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -56,5 +57,12 @@ public class KystController {
         userModelRepository.delete(user);
         return "redirect:/register";
     }
+
+   /* @GetMapping("/edit/{username}")
+    public UserModel editUser(@PathVariable (name="username") String username){
+        UserModel editUser = new UserModel("editUserPage");
+        UserModel userModel = userModelRepository.findByUsername(username);
+        editUser.setUsername("userModel", userModel);
+    }*/
 
 }

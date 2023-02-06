@@ -23,13 +23,13 @@ public class KystSecurityConfig {
         this.bcrypt = bcrypt;
         this.userModelService = userModelService;
     }
-//finns mer att göra från kristoffers template
+
     @Bean
     public SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception{
         http.csrf().disable()
                 .authorizeHttpRequests(requests -> {
                     requests
-                            .requestMatchers("/kyst","/login","/error", "/register","/static/**","/rest/**", "/logout").permitAll()
+                            .requestMatchers("/kyst","/login/**","/error", "/register","/static/**","/rest/**", "/logout").permitAll()
                             .requestMatchers("/admin").hasRole("ADMIN")
                             .requestMatchers("/user").hasRole("USER")
                             .requestMatchers("/delete").authenticated()
@@ -59,7 +59,7 @@ public class KystSecurityConfig {
         return http.build();
     }
 
-    //Här säger vi till Spring att använda våran implementation istället
+    //Our implementation instead of the original
     public DaoAuthenticationProvider authenticationOverride(){
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setUserDetailsService(userModelService);
