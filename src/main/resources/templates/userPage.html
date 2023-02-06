@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet"
@@ -10,14 +10,19 @@
 </head>
 <body>
 <header>
-    <h1>Welcome <div th:text="${#authentication.principal.firstName}"></div></h1>
-
-    <button><a th:href="@{/logout}">Logout?</a></button>
+    <h1>Welcome <div th:text="${#authentication.principal.username}"></div></h1>
 </header>
+<main>
+    <div sec:authorize="isAuthenticated()">Text visible only to authenticated users.</div>
+    <div sec:authentication="principal.firstName"></div>
+    <div sec:authentication="principal.lastName"></div>
+    <div sec:authentication="principal.authorities"></div>
+ <a th:href="@{'/delete/' + ${#authentication.principal.username}}" class="btn btn-danger" role="button">Delete</a>
 
+</main>
 <footer id="mainFooter">
     <div class="footer">
-        <h3>This it the footer</h3>
+        <button><a th:href="@{/logout}">Logout?</a></button>
     </div>
 </footer>
 </body>
