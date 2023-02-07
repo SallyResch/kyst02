@@ -14,8 +14,6 @@
 <main>
     <div sec:authentication="principal.firstName"></div>
     <div sec:authentication="principal.lastName"></div>
-    <div sec:authorize="hasRole('USER')"><a th:href="@{'/delete/' + ${#authentication.principal.username}}"
-                                            class="btn btn-danger" role="button">Delete</a></div>
 </main>
 <footer id="mainFooter">
     <div class="footer">

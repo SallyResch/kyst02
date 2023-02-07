@@ -25,7 +25,7 @@ public class UserModelDAO implements IUserModelDAO<UserModel>{
 
     @Override
     public void update() {
-
+    userModelRepository
     }
 
     @Override
