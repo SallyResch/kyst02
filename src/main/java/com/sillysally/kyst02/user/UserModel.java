@@ -95,7 +95,7 @@ public class UserModel implements UserDetails{
         return this;
     }
 
-    public void setUsername(String username, UserModel userModel) {
+    public void setUsername(String username) {
         this.username = username;
     }
 

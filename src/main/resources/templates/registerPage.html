@@ -2,10 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-          crossorigin="anonymous" />
     <title>SignUp</title>
     <style>
         .error {
@@ -58,8 +54,8 @@
         <!-- Display SINGULAR error -->
         <p th:if="${ #fields.hasErrors('username') }"
            th:errors="*{username}"
-           th:errorclass="error"
-        ></p>
+           th:errorclass="error">
+        </p>
     </div>
 
     <!-- Password Input -->
@@ -73,7 +69,6 @@
                 class="error">
             </li>
         </ul>
-
     </div>
 
     <div class="m-4 dropdown d-flex">
@@ -81,7 +76,6 @@
         <select class="btn btn-primary dropdown-toggle" th:field="*{authorities}">
             <option class="dropdown-item" th:text="Admin" value="Admin"></option>
             <option class="dropdown-item" th:text="User" value="User"></option>
-            <option class="dropdown-item" th:text="Company" value="Company"></option>
         </select>
     </div>
 

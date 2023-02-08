@@ -4,19 +4,34 @@
     <meta charset="UTF-8">
 
     <title>Adminpage</title>
+    <style>
+        .image{
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            width: 150px;
+        }
+        body{
+            background-color: navajowhite;
+        }
+    </style>
 </head>
 <body>
 <header>
-    <h1>Admin page</h1>
+    <a href="/kyst" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <img th:src="@{static/images/KystSvart.png}" class="image" alt="picture">
+    </a>
     <h1>Hello Boss <div th:text="${#authentication.principal.firstName}"></div></h1>
-    <button><a th:href="@{/logout}">Logout?</a></button>
+
 </header>
 <main>
     <div sec:authentication="principal.firstName"></div>
     <div sec:authentication="principal.lastName"></div>
 </main>
+<button><a th:href="@{'/delete/' + ${#authentication.principal.username}}" class="btn btn-danger" role="button">Delete User</a></button>
 <footer id="mainFooter">
     <div class="footer">
+        <button><a th:href="@{/logout}">Logout?</a></button>
         <h3>This it the footer</h3>
     </div>
 </footer>

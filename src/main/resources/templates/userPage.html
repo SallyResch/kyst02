@@ -7,9 +7,23 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous" />
     <title>Userpage</title>
+    <style>
+        .image{
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            width: 150px;
+        }
+        body{
+            background-color: navajowhite;
+        }
+    </style>
 </head>
 <body>
 <header>
+    <a href="/kyst" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <img th:src="@{static/images/KystSvart.png}" class="image" alt="picture">
+    </a>
     <h1>Welcome <div th:text="${#authentication.principal.username}"></div></h1>
 </header>
 <main>

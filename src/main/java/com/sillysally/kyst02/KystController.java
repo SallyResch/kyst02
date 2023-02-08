@@ -48,13 +48,14 @@ public class KystController {
 
         System.out.println(userModel);
         userModelRepository.save(userModel);
-        return "loginPage";
+        return "homePage";
     }
+
     @GetMapping ("/delete/{username}")
     public String deleteUser(@PathVariable(name="username")String username){
         UserModel user = userModelRepository.findByUsername(username);
         userModelRepository.delete(user);
-        return "redirect:/register";
+        return "redirect:/kyst";
     }
 
     /*@GetMapping ("/update/{id}")
