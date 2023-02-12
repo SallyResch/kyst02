@@ -1,4 +1,4 @@
-package com.sillysally.kyst02;
+package com.sillysally.kyst02.controller;
 
 import com.sillysally.kyst02.authorities.UserRoles;
 import com.sillysally.kyst02.configurations.KystPasswordConfig;

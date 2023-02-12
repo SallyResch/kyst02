@@ -32,7 +32,8 @@
     <div sec:authentication="principal.lastName"></div>
     <div sec:authentication="principal.familyMembers"></div>
     <div sec:authentication="principal.username"></div>
-    <a th:href="@{'/delete/' + ${#authentication.principal.username}}" class="btn btn-danger" role="button">Delete User</a>
+    <a th:href="@{'/delete/' + ${#authentication.principal.username}}" class="btn btn-danger"
+       onclick="if(!(confirm('Are you sure you want to delete your account?'))) return false" role="button">Delete User</a>
 
 </main>
 <footer id="mainFooter">
