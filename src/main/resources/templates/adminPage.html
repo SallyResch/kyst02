@@ -2,38 +2,64 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
     <title>Adminpage</title>
     <style>
+        h1,h2,h3,h4,h5,h6,a,button,p{
+            font-family: Courier;
+            font-weight: bold;
+        }
         .image{
             border: 1px solid #ddd;
             border-radius: 4px;
             padding: 5px;
             width: 150px;
         }
-        body{
-            background-color: navajowhite;
+        .maincontainer{
+            margin-left: auto;
+            margin-right: auto;
+            width: 24em
         }
     </style>
 </head>
 <body>
-<header>
-    <a href="/kyst" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-        <img th:src="@{static/images/KystSvart.png}" class="image" alt="picture">
-    </a>
-    <h1>Hello Boss <div th:text="${#authentication.principal.firstName}"></div></h1>
-
-</header>
-<main>
-    <div sec:authentication="principal.firstName"></div>
-    <div sec:authentication="principal.lastName"></div>
-</main>
-<button><a th:href="@{'/delete/' + ${#authentication.principal.username}}" class="btn btn-danger" role="button">Delete User</a></button>
-<footer id="mainFooter">
-    <div class="footer">
-        <button><a th:href="@{/logout}">Logout?</a></button>
-        <h3>This it the footer</h3>
+<div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a class="p-2" href="/kyst" ><img th:src="@{static/images/KystSvart.png}" class="image" alt="picture"></a>
+        <button class="btn btn-light p-2"><a th:href="@{'/delete/' + ${#authentication.principal.username}}"
+                                         role="button">Delete User</a></button>
+        <button class="btn btn-light p-2"><a th:href="@{/logout}">Logout?</a></button>
     </div>
-</footer>
+</div>
+
+<div class="maincontainer">
+    <div class="header">
+        <header>
+            <h1>Hello Boss <div th:text="${#authentication.principal.firstName}"></div></h1>
+        </header>
+    </div>
+    <main>
+        <p>First name</p>
+        <div sec:authentication="principal.firstName"></div>
+        <p>Last name</p>
+        <div sec:authentication="principal.lastName"></div>
+    </main>
+</div>
+<div class="fixed-bottom">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+            <span class="mb-3 mb-md-0 text-muted">© 2023 KYST company, Inc</span>
+        </div>
+    </footer>
+</div>
 </body>
 </html>

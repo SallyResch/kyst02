@@ -46,6 +46,10 @@ public class UserModel implements UserDetails{
     public UserModel() {
 
     }
+
+    public UserModel(Long id){
+        this.id=id;
+    }
     public UserModel(String firstName,
                      String lastName,
                      int familyMembers,

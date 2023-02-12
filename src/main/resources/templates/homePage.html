@@ -7,17 +7,22 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        .image{
+        h1,h2,h3,h4,h5,h6,a,button{
+            font-family: Courier;
+            font-weight: bold;
+        }
+        .kystIcon{
             border: 1px solid #ddd;
             border-radius: 4px;
             padding: 5px;
             width: 150px;
         }
-        body{
-            background-color: navajowhite;
-        }
-        .myImage {
+
+        .rounded-circle {
             display: block;
             margin-left: auto;
             margin-right: auto;
@@ -38,16 +43,16 @@
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/kyst" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                <img th:src="@{static/images/KystSvart.png}" class="image" alt="picture">
+                <img th:src="@{static/images/KystSvart.png}" class="kystIcon" alt="picture">
             </a>
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li><a th:href="@{/kyst}" class="nav-link px-2 text-secondary">Home</a></li>
                 <li><a th:href="@{/kyst}" class="nav-link px-2 text-secondary">Weather</a></li>
             </ul>
             <div class="text-end">
-                <button type="button" class="btn btn-warning"><a th:href="@{/admin}">Login as Admin</a></button>
-                <button type="button" class="btn btn-warning"><a th:href="@{/user}">Login as User</a></button>
-                <button type="button" class="btn btn-warning"><a th:href="@{/register}">Sign-Up</a></button>
+                <button type="button" class="btn btn-light text-secondary"><a th:href="@{/admin}">Login as Admin</a></button>
+                <button type="button" class="btn btn-light"><a th:href="@{/user}">Login as User</a></button>
+                <button type="button" class="btn btn-light"><a th:href="@{/register}">Sign-Up</a></button>
             </div>
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                 <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
@@ -59,7 +64,7 @@
 <main>
     <h4 class="mainHeader">Welcome to Keep Your Shit Together (aka K.Y.S.T)</h4>
 
-    <img class="myImage" th:src="@{static/images/DALL·E 2022-12-16 14.08.27 - a digital painting of a woman standing next to a box filled with random things that is overflowing in a cozy house.png}" alt="picture here">
+    <img class="rounded-circle" th:src="@{static/images/DALL·E 2022-12-16 14.08.27 - a digital painting of a woman standing next to a box filled with random things that is overflowing in a cozy house.png}" alt="picture here">
 </main>
 </div>
 <div class="fixed-bottom">
@@ -70,15 +75,8 @@
             </a>
             <span class="mb-3 mb-md-0 text-muted">© 2023 KYST company, Inc</span>
         </div>
-
-        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
-        </ul>
     </footer>
 </div>
 </div>
-
 </body>
 </html>

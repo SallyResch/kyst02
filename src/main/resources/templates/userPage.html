@@ -6,18 +6,22 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous" />
-    <title>Userpage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        h1,h2,h3,h4,h5,h6,a,button,div,p{
+            font-family: Courier;
+            font-weight: bold;
+        }
         .image{
             border: 1px solid #ddd;
             border-radius: 4px;
             padding: 5px;
             width: 150px;
         }
-        body{
-            background-color: navajowhite;
-        }
     </style>
+    <title>Userpage</title>
 </head>
 <body>
 <header>
@@ -28,18 +32,27 @@
 </header>
 <main>
     <div sec:authorize="isAuthenticated()">Text visible only to authenticated users.</div>
+    <p>First name</p>
     <div sec:authentication="principal.firstName"></div>
+    <p>Last name</p>
     <div sec:authentication="principal.lastName"></div>
+    <p>Amount of familymemebers</p>
     <div sec:authentication="principal.familyMembers"></div>
+    <p>Username</p>
     <div sec:authentication="principal.username"></div>
-    <a th:href="@{'/delete/' + ${#authentication.principal.username}}" class="btn btn-danger"
+    <a th:href="@{'/delete/' + ${#authentication.principal.username}}" class="btn btn-light"
        onclick="if(!(confirm('Are you sure you want to delete your account?'))) return false" role="button">Delete User</a>
-
+    <button class="btn btn-light"><a th:href="@{/logout}">Logout?</a></button>
 </main>
-<footer id="mainFooter">
-    <div class="footer">
-        <button><a th:href="@{/logout}">Logout?</a></button>
-    </div>
-</footer>
+<div class="fixed-bottom">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+            <span class="mb-3 mb-md-0 text-muted">© 2023 KYST company, Inc</span>
+        </div>
+    </footer>
+</div>
 </body>
 </html>
