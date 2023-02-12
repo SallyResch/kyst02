@@ -17,6 +17,20 @@
         body{
             background-color: navajowhite;
         }
+        .myImage {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            height: auto;
+            width: auto;
+            max-width: 25%;
+            max-height: 25%;
+        }
+        .mainHeader{
+            margin-left: auto;
+            margin-right: auto;
+            width: 24em
+        }
     </style>
 </head>
 <body>
@@ -41,27 +55,14 @@
         </div>
     </div>
 </header>
+<div class="mainContent">
 <main>
     <h4 class="mainHeader">Welcome to Keep Your Shit Together (aka K.Y.S.T)</h4>
-    <style>
-        .myImage {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            height: auto;
-            width: auto;
-            max-width: 25%;
-            max-height: 25%;
-        }
-        .mainHeader{
-            margin-left: auto;
-            margin-right: auto;
-            width: 24em
-        }
-    </style>
+
     <img class="myImage" th:src="@{static/images/DALL·E 2022-12-16 14.08.27 - a digital painting of a woman standing next to a box filled with random things that is overflowing in a cozy house.png}" alt="picture here">
 </main>
-<div class="container">
+</div>
+<div class="fixed-bottom">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
         <div class="col-md-4 d-flex align-items-center">
             <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
